@@ -1,0 +1,154 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #131111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Contenedor de corazones de fondo */
+#hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Botón "Abrir Carta" */
+.btn-container {
+    position: fixed;
+    z-index: 20;
+    text-align: center;
+}
+
+.btn-abrir {
+    background: #ff4081;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 0, 85, 0.3);
+    transition: all 0.3s ease;
+    animation: heartbeat 1.5s infinite;
+}
+
+.btn-abrir:hover {
+    min-width: 150px; /* Ancho mínimo para dedos */
+    padding: 15px 0;
+    background: #ff1493;
+    transform: scale(1.1);
+}
+
+/* Carta (inicialmente oculta) */
+.carta {
+   background: rgba(255, 245, 230, 0.95);; /* Crema brillante (95% opaco) */
+    border: 3px solid rgba(255, 105, 180, 0.7); /* Borde rosa chic */
+    box-shadow: 0 0 25px rgba(255, 20, 147, 0.3); /* Sombra rosada */
+
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 0 25px rgba(255, 20, 147, 0.3);;
+    position: relative;
+    z-index: 10;
+    border: 2px dashed #ff4081;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+}
+
+.carta.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Estilos del contenido de la carta */
+h1 {
+    color: rgb(219, 35, 6);         /* Rosa fuerte */
+    text-align: center;
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+.contenido {
+    font-size: clamp(16px, 4vw, 18px);
+    color: #d40078; /* Fucsia intenso */
+    font-family: 'Comic Sans MS', cursive; /* Tipografía divertida */
+    line-height: 1.6;
+    
+    
+}
+
+.nombre {
+    color: #ff8c00;;
+    font-weight: bold;
+}
+
+.corazones-centrales {
+    text-align: center;
+    font-size: 2em;
+    margin: 20px 0;
+    color: #ff4081;
+}
+
+.firma {
+    margin-top: 25px;
+    text-align: right;
+    font-style: italic;
+    color: #ff8c00;;
+    font-weight: bold;
+}
+
+/* Animaciones */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-50px) rotate(180deg); }
+    100% { transform: translateY(-100px) rotate(360deg); }
+}
+/* -------------------------------------------- */
+/* ESTILOS PARA MÓVIL (menos de 768px de ancho) */
+/* -------------------------------------------- */
+@media (max-width: 768px) {
+    .carta {
+        width: 95% !important; /* Ocupa casi toda la pantalla */
+        padding: 15px !important; /* Menos espacio interno */
+        font-size: 14px; /* Texto más pequeño */
+    }
+
+    h1 {
+        font-size: 1.5rem !important; /* Título más compacto */
+    }
+
+    .btn-abrir {
+        padding: 15px 30px !important; /* Botón más grande para dedos */
+        font-size: 1.2rem !important;
+    }
+
+    /* Corazones más pequeños y menos densos */
+    .heart {
+        font-size: 16px !important;
+    }
+}
